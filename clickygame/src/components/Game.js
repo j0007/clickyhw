@@ -4,6 +4,8 @@ import Container from "./Body.js";
 import Tile from "./Tile.js";
 import data from "../data.json";
 
+
+// --- **CODE BELOW IS FROM CLASS SOLUTIONS REPOSITORY I AM TRYING TO FIGURE OUT STILL - Working backwards**--
 class Game extends Component {
   state = {
     data,
