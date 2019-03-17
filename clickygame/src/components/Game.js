@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import Nav from "../Nav";
-import Container from "../Container";
-import ClickItem from "../ClickItem";
-import data from "../../data.json";
+import Nav from "./Navbar";
+import Container from "./Body.js";
+import Tile from "./Tile.js";
+import data from "../data.json";
 
 class Game extends Component {
   state = {
     data,
     score: 0,
-    topScore: 0
   };
 
   componentDidMount() {
@@ -18,12 +17,10 @@ class Game extends Component {
   handleCorrectGuess = newData => {
     const { topScore, score } = this.state;
     const newScore = score + 1;
-    const newTopScore = Math.max(newScore, topScore);
 
     this.setState({
       data: this.shuffleData(newData),
-      score: newScore,
-      topScore: newTopScore
+      score: newScore
     });
   };
 
@@ -71,13 +68,12 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <Nav score={this.state.score} topScore={this.state.topScore} />
+        <Nav score={this.state.score} />
         <Container>
           {this.state.data.map(item => (
-            <ClickItem
+            <Tile
               key={item.id}
               id={item.id}
-              shake={!this.state.score && this.state.topScore}
               handleClick={this.handleItemClick}
               image={item.image}
             />
